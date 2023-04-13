@@ -1,12 +1,11 @@
 import React from 'react';
-import { Container, WelcomeText } from './Login.styles';
+import { LoginController, LoginInterface } from './Login.controller';
+import { LoginView } from './Login.view';
 
-const Login = () => {
-   return (
-      <Container>
-         <WelcomeText>Login</WelcomeText>
-      </Container>
-   );
+const Login: React.FC = () => {
+   const controller = LoginController();
+
+   return <LoginView {...controller} />;
 };
 
-export default Login;
+export { Login };

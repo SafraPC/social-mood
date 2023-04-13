@@ -9,7 +9,7 @@ const Routes = () => {
    const { user } = useContext(UserContext);
 
    const SecurityRoute = useCallback(() => {
-      if (user?.name) {
+      if (user?.nickname) {
          return <BottomRoutes />;
       }
       return <UnauthorizedRoutes />;

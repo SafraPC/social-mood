@@ -1,20 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
-
-interface UserInfo {
-   name: string;
-   email: string;
-   age: string;
-   sex: string;
-   history: string;
-   interests: string[];
-   password: string;
-}
+import { UserDTO } from '../screens/Login/application/Login.dto';
 
 interface UserContextProps {
-   user: UserInfo;
-   setUser: (user: UserInfo) => void;
+   user: UserDTO;
+   setUser: (user: UserDTO) => void;
 }
 export const UserContext = createContext<UserContextProps>(
    {} as UserContextProps
@@ -23,14 +14,11 @@ export const UserContext = createContext<UserContextProps>(
 const UserProvider: React.FC<{ children: React.ReactElement }> = ({
    children,
 }) => {
-   const [user, setUser] = useState<UserInfo>({
-      name: '',
-      email: '',
+   const [user, setUser] = useState<UserDTO>({
       age: '',
       history: '',
       interests: [],
-      password: '',
-      sex: '',
+      nickname: '',
    });
 
    useEffect(() => {
