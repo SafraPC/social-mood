@@ -31,7 +31,6 @@ export const InputText = styled(TextInput)`
    flex: 1;
    height: 46px;
    padding: 0 8px;
-   color: ${({ theme }) => theme.colors.gray};
 `;
 
 export const Label = styled.Text`

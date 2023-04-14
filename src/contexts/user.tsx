@@ -17,7 +17,7 @@ const UserProvider: React.FC<{ children: React.ReactElement }> = ({
    const [user, setUser] = useState<UserDTO>({
       age: '',
       history: '',
-      interests: [],
+      interests: '',
       nickname: '',
    });
 

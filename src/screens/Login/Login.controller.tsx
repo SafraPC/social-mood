@@ -10,13 +10,14 @@ export interface LoginInterface {
 const LoginController = (): LoginInterface => {
    const [error, setError] = useState('');
    const { setUser } = useContext(UserContext);
+
    const handleSubmit = (data: UserDTO) => {
       const { age, history, interests, nickname } = data;
       if (!age || !history || !interests || !nickname) {
          setError('Preencha todos os campos!');
          return;
       }
-      if (age <= 18) {
+      if (age < 18) {
          setError('Você precisa ter mais de 18 anos!');
          return;
       }
