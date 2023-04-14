@@ -15,6 +15,7 @@ import {
 
 const HomeView: React.FC<HomeController> = ({ id }) => {
    const { user } = useContext(UserContext);
+
    return (
       <Page>
          <Container>

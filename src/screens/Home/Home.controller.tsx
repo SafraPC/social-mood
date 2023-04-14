@@ -13,9 +13,7 @@ export interface HomeController {
 
 const homeController = (): HomeController => {
    const { user } = useContext(UserContext);
-   // useEffect(() => {
-   //    getNewReelsSuggestions(user);
-   // }, []);
+
    return {
       id: 0,
    };
