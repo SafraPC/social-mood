@@ -7,7 +7,7 @@ import {
 import { UserDTO } from '../Login/application/Login.dto';
 import { ChatDTO } from './aplication/Home.dto';
 
-interface GPTResponse {
+export interface GPTResponse {
    error: boolean;
    data: GPTResponseText;
 }

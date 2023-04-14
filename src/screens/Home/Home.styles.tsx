@@ -43,6 +43,28 @@ export const Section = styled.View`
    border-radius: 4px;
 `;
 
+export const Card = styled.View`
+   background-color: ${({ theme }) => theme.colors.darkElements};
+   border-radius: 4px;
+   padding: 15px;
+   margin-top: 15px;
+`;
+
+export const CardTitle = styled.Text`
+   color: ${({ theme }) => theme.colors.white};
+   font-size: 13px;
+   font-weight: bold;
+   margin-top: 7px;
+   text-align: center;
+`;
+
+export const CardDescription = styled.Text`
+   color: ${({ theme }) => theme.colors.white};
+   font-size: 13px;
+   margin-top: 7px;
+   text-align: center;
+`;
+
 export const SectionTitle = styled.Text`
    color: ${({ theme }) => theme.colors.white};
    font-size: 13px;

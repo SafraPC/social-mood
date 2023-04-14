@@ -6,6 +6,9 @@ import { HomeController } from './Home.controller';
 import {
    Button,
    ButtonText,
+   Card,
+   CardDescription,
+   CardTitle,
    Container,
    Section,
    SectionTitle,
@@ -13,7 +16,16 @@ import {
    Title,
 } from './Home.styles';
 
-const HomeView: React.FC<HomeController> = ({ id }) => {
+const HomeView: React.FC<HomeController> = ({
+   advices,
+   posts,
+   reels,
+   refreshAdvices,
+   refreshPosts,
+   refreshReels,
+   refreshStatus,
+   status,
+}) => {
    const { user } = useContext(UserContext);
 
    return (
@@ -25,27 +37,51 @@ const HomeView: React.FC<HomeController> = ({ id }) => {
             </Subtitle>
             <Section>
                <SectionTitle>Sugestões de POSTS</SectionTitle>
-               <Button>
+               <Button onPress={refreshPosts}>
                   <ButtonText>Pressione para gerar</ButtonText>
                </Button>
+               {posts.map((post, index) => (
+                  <Card key={index.toString()}>
+                     <CardTitle>{post.data.title}</CardTitle>
+                     <CardDescription>{post.data.description}</CardDescription>
+                  </Card>
+               ))}
             </Section>
             <Section>
                <SectionTitle>Sugestões de REELS</SectionTitle>
-               <Button>
+               <Button onPress={refreshReels}>
                   <ButtonText>Pressione para gerar</ButtonText>
                </Button>
+               {reels.map((post, index) => (
+                  <Card key={index.toString()}>
+                     <CardTitle>{post.data.title}</CardTitle>
+                     <CardDescription>{post.data.description}</CardDescription>
+                  </Card>
+               ))}
             </Section>
             <Section>
                <SectionTitle>Sugestões de STATUS</SectionTitle>
-               <Button>
+               <Button onPress={refreshStatus}>
                   <ButtonText>Pressione para gerar</ButtonText>
                </Button>
+               {status.map((post, index) => (
+                  <Card key={index.toString()}>
+                     <CardTitle>{post.data.title}</CardTitle>
+                     <CardDescription>{post.data.description}</CardDescription>
+                  </Card>
+               ))}
             </Section>
             <Section>
                <SectionTitle>CONSELHOS</SectionTitle>
-               <Button>
+               <Button onPress={refreshAdvices}>
                   <ButtonText>Pressione para gerar</ButtonText>
                </Button>
+               {advices.map((post, index) => (
+                  <Card key={index.toString()}>
+                     <CardTitle>{post.data.title}</CardTitle>
+                     <CardDescription>{post.data.description}</CardDescription>
+                  </Card>
+               ))}
             </Section>
          </Container>
       </Page>
