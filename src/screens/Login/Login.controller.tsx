@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../contexts/user';
 import { UserDTO } from './application/Login.dto';
@@ -21,7 +22,7 @@ const LoginController = (): LoginInterface => {
          setError('Você precisa ter mais de 18 anos!');
          return;
       }
-      setError('');
+      AsyncStorage.setItem('user', JSON.stringify(data));
       setUser(data);
    };
 

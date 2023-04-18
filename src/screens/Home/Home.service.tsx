@@ -1,5 +1,5 @@
 import api from '../../service/api';
-import { preMessage } from '../../service/preScript';
+import { preChat } from '../../service/preScript';
 import {
    extractResponseText,
    GPTResponseText,
@@ -11,19 +11,6 @@ export interface GPTResponse {
    error: boolean;
    data: GPTResponseText;
 }
-
-const preChat = (userInfo: UserDTO) => `
-${preMessage}
-
-Guarde o contato: e não responda a mesma coisa que tenha respondido anteriormente,
-mesmo que seja a mesma pergunta.
-
- Nome: ${userInfo.nickname},
- Idade: ${userInfo.age},
- Objetivo: ${userInfo.history},
- Interesses: ${userInfo.interests},
-
- Me responda de forma objetiva com uma descrição de no máximo 300 caracteres:`;
 
 export const getNewReelsSuggestions = async (
    userInfo: UserDTO
@@ -64,13 +51,16 @@ export const getNewPostSuggestions = async (
          model: 'gpt-3.5-turbo',
          messages: [{ role: 'user', content: chat }],
       });
+
       const message = response.data.choices[0].message.content;
       const answer = extractResponseText(message);
+      console.log(answer);
       return {
          error: false,
          data: answer,
       };
    } catch (err) {
+      console.log(err.response.data);
       console.log(err.message);
    }
 };

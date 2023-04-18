@@ -7,7 +7,6 @@ import { UnauthorizedRoutes } from './unauthorized';
 
 const Routes = () => {
    const { user } = useContext(UserContext);
-
    const SecurityRoute = useCallback(() => {
       if (user?.nickname) {
          return <BottomRoutes />;

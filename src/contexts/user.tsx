@@ -29,7 +29,7 @@ const UserProvider: React.FC<{ children: React.ReactElement }> = ({
          }
       };
       initialize();
-   }, [user]);
+   }, []);
 
    return (
       <UserContext.Provider value={{ user, setUser }}>
