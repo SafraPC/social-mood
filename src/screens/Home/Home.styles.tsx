@@ -1,8 +1,14 @@
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
+
+interface ButtonProps {
+   disabled: boolean;
+}
 
 export const Container = styled.ScrollView.attrs({
    contentContainerStyle: {
       padding: 10,
+      paddingBottom: getBottomSpace() + 40,
       flexGrow: 1,
    },
 })``;
@@ -22,8 +28,9 @@ export const Subtitle = styled.Text`
    margin-bottom: 30px;
 `;
 
-export const Button = styled.TouchableOpacity`
-   background-color: ${({ theme }) => theme.colors.darkElements};
+export const Button = styled.TouchableOpacity<ButtonProps>`
+   background-color: ${({ theme, disabled }) =>
+      disabled ? 'gray' : theme.colors.darkElements};
    border-radius: 4px;
    padding: 15px;
    margin-top: 35px;
@@ -41,28 +48,6 @@ export const Section = styled.View`
    background-color: ${({ theme }) => theme.colors.secondary};
    padding: 15px;
    border-radius: 4px;
-`;
-
-export const Card = styled.View`
-   background-color: ${({ theme }) => theme.colors.darkElements};
-   border-radius: 4px;
-   padding: 15px;
-   margin-top: 15px;
-`;
-
-export const CardTitle = styled.Text`
-   color: ${({ theme }) => theme.colors.white};
-   font-size: 13px;
-   font-weight: bold;
-   margin-top: 7px;
-   text-align: center;
-`;
-
-export const CardDescription = styled.Text`
-   color: ${({ theme }) => theme.colors.white};
-   font-size: 13px;
-   margin-top: 7px;
-   text-align: center;
 `;
 
 export const SectionTitle = styled.Text`

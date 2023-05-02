@@ -33,7 +33,7 @@ export const getNewReelsSuggestions = async (
          data: answer,
       };
    } catch (err) {
-      console.log(err.message);
+      //fail quietly
    }
 };
 
@@ -51,17 +51,14 @@ export const getNewPostSuggestions = async (
          model: 'gpt-3.5-turbo',
          messages: [{ role: 'user', content: chat }],
       });
-
       const message = response.data.choices[0].message.content;
       const answer = extractResponseText(message);
-      console.log(answer);
       return {
          error: false,
          data: answer,
       };
    } catch (err) {
-      console.log(err.response.data);
-      console.log(err.message);
+      //fail quietly
    }
 };
 
@@ -71,8 +68,10 @@ export const getNewStatusSuggestions = async (
    try {
       const chat = `
       ${preChat(userInfo)}
-       Quais são as melhores sugestões de Status baseadas nos meus objetivos, e por quê?
-       caso eu já tenha perguntado isso, me dê outras sugestões de Status de 24h. 
+       Quais são as melhores sugestões de Status 24h baseados em meus objetivos, e por quê?
+       caso eu já tenha perguntado isso, me dê outras sugestões sobre este assunto. 
+
+       me envie sua resposta no modelo que pedi.
       `;
 
       const response = await api.post<ChatDTO>(`/chat/completions`, {
@@ -86,7 +85,7 @@ export const getNewStatusSuggestions = async (
          data: answer,
       };
    } catch (err) {
-      console.log(err.message);
+      //fail quietly
    }
 };
 
@@ -109,6 +108,6 @@ export const getAdvices = async (userInfo: UserDTO): Promise<GPTResponse> => {
          data: answer,
       };
    } catch (err) {
-      console.log(err.message);
+      //fail quietly
    }
 };
