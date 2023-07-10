@@ -1,9 +1,9 @@
 import React from 'react';
-import { homeController } from './Home.controller';
+import { HomeController } from './Home.controller';
 import { HomeView } from './Home.view';
 
 const Home = () => {
-   const controller = homeController();
+   const controller = HomeController();
 
    return <HomeView {...controller} />;
 };

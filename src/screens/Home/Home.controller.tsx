@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/user';
 import { GPTDomain } from './aplication/Home.domain';
 import {
@@ -7,6 +7,7 @@ import {
    getNewReelsSuggestions,
    getNewStatusSuggestions,
 } from './Home.service';
+import { UserDTO } from '../Login/application/Login.dto';
 
 export interface HomeController {
    reels: GPTDomain;
@@ -17,9 +18,10 @@ export interface HomeController {
    refreshStatus: () => void;
    refreshPosts: () => void;
    refreshAdvices: () => void;
+   user: UserDTO;
 }
 
-const homeController = (): HomeController => {
+const HomeController = (): HomeController => {
    const { user } = useContext(UserContext);
    const [reels, setReels] = useState<GPTDomain>({
       data: [],
@@ -99,7 +101,8 @@ const homeController = (): HomeController => {
       refreshStatus,
       refreshPosts,
       refreshAdvices,
+      user,
    };
 };
 
-export { homeController };
+export { HomeController };

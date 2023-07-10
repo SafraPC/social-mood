@@ -10,6 +10,7 @@ export const Container = styled.ScrollView.attrs({
       padding: 10,
       paddingBottom: getBottomSpace() + 40,
       flexGrow: 1,
+      marginTop: 20,
    },
 })``;
 

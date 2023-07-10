@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Page } from '../../components/Page';
-import { UserContext } from '../../contexts/user';
 import { nowAccomplishment } from '../../utils/nowAccomplishment';
 import { HorizontalList } from './components/HorizontalList';
 import { HomeController } from './Home.controller';
@@ -23,8 +22,8 @@ const HomeView: React.FC<HomeController> = ({
    refreshReels,
    refreshStatus,
    status,
+   user,
 }) => {
-   const { user } = useContext(UserContext);
    return (
       <Page>
          <Container>
