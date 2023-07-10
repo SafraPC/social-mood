@@ -8,7 +8,7 @@ interface ButtonProps {
 export const Container = styled.ScrollView.attrs({
    contentContainerStyle: {
       padding: 10,
-      paddingBottom: getBottomSpace() + 40,
+      paddingBottom: getBottomSpace() + 100,
       flexGrow: 1,
       marginTop: 20,
    },
@@ -26,7 +26,6 @@ export const Subtitle = styled.Text`
    font-size: 13px;
    font-weight: bold;
    margin-top: 15px;
-   margin-bottom: 30px;
 `;
 
 export const Button = styled.TouchableOpacity<ButtonProps>`

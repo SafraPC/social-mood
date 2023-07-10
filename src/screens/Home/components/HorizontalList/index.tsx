@@ -4,7 +4,7 @@ import useFlatList from '../../../../hooks/useFlatList';
 import { GPTResponse } from '../../Home.service';
 import { Card } from '../Card';
 import { Separator } from '../Card/styles';
-import { Container, EmptyMessage } from './styles';
+import { Container, EmptyContainer, EmptyMessage } from './styles';
 
 interface HorizontalListProps {
    data: GPTResponse[];
@@ -17,30 +17,28 @@ const HorizontalList: React.FC<HorizontalListProps> = ({
    loading,
    emptyMessage,
 }) => {
-   const List = useFlatList<GPTResponse>();
+   const { List } = useFlatList<GPTResponse>();
 
-   if (loading) {
-      return (
-         <Container>
-            <ActivityIndicator />
-         </Container>
-      );
-   }
    if (!data.length) {
       return (
-         <Container>
+         <EmptyContainer>
+            {loading ? <ActivityIndicator /> : null}
             <EmptyMessage>{emptyMessage}</EmptyMessage>
-         </Container>
+         </EmptyContainer>
       );
    }
 
    return (
-      <List
-         data={data.reverse()}
-         horizontal
-         ItemSeparatorComponent={() => <Separator />}
-         renderItem={({ item }) => <Card item={item} />}
-      />
+      <Container>
+         {loading ? <ActivityIndicator /> : null}
+         <List
+            data={data.reverse()}
+            noBottomPadding
+            horizontal
+            ItemSeparatorComponent={() => <Separator />}
+            renderItem={({ item }) => <Card item={item} />}
+         />
+      </Container>
    );
 };
 

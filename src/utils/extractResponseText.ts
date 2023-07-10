@@ -8,9 +8,11 @@ const extractResponseText = (text: string): GPTResponseText => {
       const data = JSON.parse(text) as GPTResponseText;
       return data;
    } catch (err) {
+      console.log(err.message);
+      console.error(err.message);
       return {
          title: `Erro: ${new Date().getTime()}`,
-         description: err.message,
+         description: 'Houve um erro ao gerar sua resposta.. tente novamente.',
       };
    }
 };

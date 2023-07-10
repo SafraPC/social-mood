@@ -4,7 +4,7 @@ interface TitleProps {
    error: boolean;
 }
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
    background-color: ${({ theme }) => theme.colors.darkElements};
    border-radius: 4px;
    width: 300px;

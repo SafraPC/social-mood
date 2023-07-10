@@ -10,8 +10,8 @@ interface ListProps<T> extends FlatListProps<T> {
    loading?: boolean;
    loadingText?: string;
    emptyText?: string;
-   noPadding?: boolean;
    whiteBackground?: boolean;
+   noBottomPadding?: boolean;
 }
 
 interface RenderItemInterface {
@@ -27,28 +27,26 @@ function useFlatList<T = any>() {
          ({
             contentContainerStyle: {
                flexGrow: 1,
-               paddingBottom: getBottomSpace() + 40,
             },
          } as StyleProp<ViewStyle>)
-   )`
-      margin-bottom: 20px;
-   `;
+   )``;
 
    const Separator = styled.View`
       height: 20px;
    `;
 
    const keyExtractor = useCallback((item: T, index: number) => `${index}`, []);
+   const ref = React.useRef<FlatList<T>>(null);
 
-   return useCallback(
+   const RenderList = useCallback(
       (props: ListProps<T>) => {
          const {
             loading,
             loadingText,
             whiteBackground,
             emptyText,
-            noPadding,
             renderItem,
+            noBottomPadding,
             ...rest
          } = props;
          return (
@@ -63,6 +61,7 @@ function useFlatList<T = any>() {
                      </AnimatedCardList>
                   );
                }}
+               ref={ref}
                ListEmptyComponent={() => {
                   if (loading) {
                      return <Loading />;
@@ -74,12 +73,20 @@ function useFlatList<T = any>() {
 
                   return null;
                }}
+               style={{
+                  paddingBottom: noBottomPadding ? 0 : getBottomSpace() + 40,
+               }}
                {...rest}
             />
          );
       },
       [keyExtractor]
    );
+
+   return {
+      List: RenderList,
+      ref,
+   };
 }
 
 export default useFlatList;

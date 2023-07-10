@@ -1,10 +1,14 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-   padding: 30px;
-   min-height: 120px;
    justify-content: center;
    align-items: center;
+`;
+
+export const EmptyContainer = styled.View`
+   justify-content: center;
+   align-items: center;
+   min-height: 50px;
 `;
 
 export const EmptyMessage = styled.Text`

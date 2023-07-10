@@ -4,6 +4,8 @@ import theme from './src/styles/theme';
 import { StatusBar } from 'expo-status-bar';
 import { Routes } from './src/navigation/index';
 import { UserProvider } from './src/contexts/user';
+import Toast from 'react-native-toast-message';
+
 const App = () => {
    return (
       <ThemeProvider theme={theme}>
@@ -11,6 +13,7 @@ const App = () => {
          <UserProvider>
             <Routes />
          </UserProvider>
+         <Toast />
       </ThemeProvider>
    );
 };

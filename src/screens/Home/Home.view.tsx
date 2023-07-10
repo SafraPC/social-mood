@@ -31,6 +31,8 @@ const HomeView: React.FC<HomeController> = ({
             <Subtitle>
                Aqui, você pode checar sugestões de posts e status!
             </Subtitle>
+            <Subtitle>Pressione no card para copiar seu conteúdo!</Subtitle>
+
             <Section>
                <SectionTitle>Sugestões de POSTS</SectionTitle>
                <Button onPress={refreshPosts} disabled={posts.loading}>
@@ -60,8 +62,8 @@ const HomeView: React.FC<HomeController> = ({
                </Button>
                <HorizontalList
                   data={status.data}
-                  emptyMessage="Você não tem possui sugestões de status!"
                   loading={status.loading}
+                  emptyMessage="Você não tem possui sugestões de status!"
                />
             </Section>
             <Section>
